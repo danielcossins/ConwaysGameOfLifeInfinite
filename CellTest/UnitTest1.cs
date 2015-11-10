@@ -110,6 +110,21 @@ namespace CellTest
         }
 
         [TestMethod]
+        public void TestSetUp()
+        {
+            Cell cell = new Cell(0, 0, true);
+            cell.setUp();
+            Cell expected = new Cell(0, 1, true);
+            Assert.AreEqual(expected.X, cell.Up.X);
+            Assert.AreEqual(expected.Y, cell.Up.Y);
+            Assert.AreEqual(cell.X, cell.Up.Down.X);
+            Assert.AreEqual(cell.Y, cell.Up.Down.Y);
+
+            Assert.AreEqual(cell.UpLeft.X, cell.Up.Left.X);
+            Assert.AreEqual(cell.UpLeft.Y, cell.Up.Left.Y);
+        }
+
+        [TestMethod]
         public void TestSetUpLeft()
         {
             Cell cell = new Cell(0, 0, true);
@@ -121,6 +136,73 @@ namespace CellTest
             //Cell newCell = cell.UpLeft;
             Assert.AreEqual(cell.UpLeft.DownRight.X, cell.X);
             Assert.AreEqual(cell.UpLeft.DownRight.Y, cell.Y);
+        }
+
+        [TestMethod]
+        public void TestSetUpRight()
+        {
+            Cell cell = new Cell(0, 0, true);
+            cell.setUpRight();
+            Cell expected = new Cell(1, 1, true);
+            Assert.AreEqual(expected.X, cell.UpRight.X);
+            Assert.AreEqual(expected.Y, cell.UpRight.Y);
+            Assert.AreEqual(cell.X, cell.UpRight.DownLeft.X);
+            Assert.AreEqual(cell.Y, cell.UpRight.DownLeft.Y);
+        }
+        [TestMethod]
+        public void TestSetLeft()
+        {
+            Cell cell = new Cell(0, 0, true);
+            cell.setLeft();
+            Cell expected = new Cell(-1, 0, true);
+            Assert.AreEqual(expected.X, cell.Left.X);
+            Assert.AreEqual(expected.Y, cell.Left.Y);
+            Assert.AreEqual(cell.X, cell.Left.Right.X);
+            Assert.AreEqual(cell.Y, cell.Left.Right.Y);
+        }
+        [TestMethod]
+        public void TestSetRight()
+        {
+            Cell cell = new Cell(0, 0, true);
+            cell.setRight();
+            Cell expected = new Cell(1, 0, true);
+            Assert.AreEqual(expected.X, cell.Right.X);
+            Assert.AreEqual(expected.Y, cell.Right.Y);
+            Assert.AreEqual(cell.X, cell.Right.Left.X);
+            Assert.AreEqual(cell.Y, cell.Right.Left.Y);
+        }
+        [TestMethod]
+        public void TestSetDown()
+        {
+            Cell cell = new Cell(0, 0, true);
+            cell.setDown();
+            Cell expected = new Cell(0, -1, true);
+            Assert.AreEqual(expected.X, cell.Down.X);
+            Assert.AreEqual(expected.Y, cell.Down.Y);
+            Assert.AreEqual(cell.X, cell.Down.Up.X);
+            Assert.AreEqual(cell.Y, cell.Down.Up.Y);
+        }
+        [TestMethod]
+        public void TestSetDownLeft()
+        {
+            Cell cell = new Cell(0, 0, true);
+            cell.setDownLeft();
+            Cell expected = new Cell(-1, -1, true);
+            Assert.AreEqual(expected.X, cell.DownLeft.X);
+            Assert.AreEqual(expected.Y, cell.DownLeft.Y);
+            Assert.AreEqual(cell.X, cell.DownLeft.UpRight.X);
+            Assert.AreEqual(cell.Y, cell.DownLeft.UpRight.Y);
+        }
+        [TestMethod]
+        public void TestSetDownRight()
+        {
+            Cell cell = new Cell(0, 0, true);
+            cell.setDownRight();
+            Cell expected = new Cell(1, -1, true);
+            Assert.AreEqual(expected.X, cell.DownRight.X);
+            Assert.AreEqual(expected.Y, cell.DownRight.Y);
+            Assert.AreEqual(cell.X, cell.DownRight.UpLeft.X);
+            Assert.AreEqual(cell.Y, cell.DownRight.UpLeft.Y);
         }
 
         //[TestMethod]

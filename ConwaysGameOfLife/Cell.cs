@@ -87,16 +87,31 @@ namespace ConwaysGameOfLife
         public Cell DownRight
         {
             get { return downRight; }
-            set {
-                //if(this == value)
-                //{
-                    downRight = new Cell(value.x + 1, value.y - 1, true);
-                //}
-                //else
-                //{
-                //    throw new ArgumentException();
-                //}
+            set { downRight = new Cell(value.x + 1, value.y - 1, true); }
+        }
+
+        public void setUp()
+        {
+            Up = this;
+            this.Y += 1;
+            Up.Down = this;
+            this.Y += -1;
+
+            if (this.UpLeft == null)
+            {
+                this.UpLeft = this;
             }
+            this.UpLeft.X += 1;
+            Up.Left = this.UpLeft;
+            this.UpLeft.X += -1;
+
+            if(this.UpRight == null)
+            {
+                this.UpRight = this;
+            }
+            this.UpRight.X += -1;
+            Up.Right = this.UpRight;
+            this.UpRight.X += 1;
         }
 
         public void setUpLeft()
@@ -107,6 +122,57 @@ namespace ConwaysGameOfLife
             UpLeft.DownRight = this;
             this.X += 1;
             this.Y += -1;
+        }
+
+        public void setUpRight()
+        {
+            UpRight = this;
+            this.X += 1;
+            this.Y += 1;
+            UpRight.DownLeft = this;
+            this.X += -1;
+            this.Y += -1;
+        }
+
+        public void setLeft()
+        {
+            Left = this;
+            this.X += -1;
+            Left.Right = this;
+            this.X += 1;
+        }
+
+        public void setRight()
+        {
+            Right = this;
+            this.X += 1;
+            Right.Left = this;
+            this.X += -1;
+        }
+        public void setDown()
+        {
+            Down = this;
+            this.Y += -1;
+            Down.Up = this;
+            this.Y += 1;
+        }
+        public void setDownLeft()
+        {
+            DownLeft = this;
+            this.X += -1;
+            this.Y += -1;
+            DownLeft.UpRight = this;
+            this.X += 1;
+            this.Y += 1;
+        }
+        public void setDownRight()
+        {
+            DownRight = this;
+            this.X += 1;
+            this.Y += -1;
+            DownRight.UpLeft = this;
+            this.X += -1;
+            this.Y += 1;
         }
         //public void setNeighbors()
         //{

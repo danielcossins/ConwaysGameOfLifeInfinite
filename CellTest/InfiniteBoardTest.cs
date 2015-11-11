@@ -45,7 +45,7 @@ namespace CellTest
             world.AddCell(1, 0);
             world.AddCell(0, 1);
             world.AddCell(1, 1);
-            int alive = world.getNumberOfAliveNeighbors(world.Cells[0]);
+            int alive = world.getNumberOfAliveNeighbors(world.Cells[0].X, world.Cells[0].Y);
             Assert.AreEqual(3, alive);
         }
 
@@ -65,6 +65,19 @@ namespace CellTest
             world.RemoveCell(0, 0);
             Assert.IsFalse(world.CellDoesExist(0, 0));
             Assert.AreEqual(0, world.CellCount());
+        }
+
+        [TestMethod]
+        public void InfiniteBoardAliveRule()
+        {
+            InfiniteBoard world = new InfiniteBoard();
+
+            world.AddCell(0, 0);
+            world.AddCell(1, 0);
+            world.AddCell(0, 1);
+            world.AddCell(1, 1);
+            world.AliveRule(0, 0);
+            Assert.AreEqual(true, world.CellDoesExist(0, 0));
         }
     }
 }

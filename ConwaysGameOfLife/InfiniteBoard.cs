@@ -34,10 +34,8 @@ namespace ConwaysGameOfLife
             Cells.Add(new Cell { X = x, Y = y});
         }
 
-        public int getNumberOfAliveNeighbors(Cell cell)
+        public int getNumberOfAliveNeighbors(int x, int y)
         {
-            int x = cell.X;
-            int y = cell.Y;
             int nAlive = 0;
 
             for(int i=0; i<Cells.Count; i++)
@@ -99,6 +97,19 @@ namespace ConwaysGameOfLife
                 }
             }
             return false;
+        }
+
+        public void AliveRule(int x, int y)
+        {
+            int nAlive = getNumberOfAliveNeighbors(x, y);
+            if(nAlive == 2 || nAlive == 3)
+            {
+
+            }
+            else
+            {
+                RemoveCell(x, y);
+            }
         }
     }
 }

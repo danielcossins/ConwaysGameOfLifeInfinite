@@ -8,11 +8,11 @@ namespace ConwaysGameOfLife
 {
     public class InfiniteBoard : Board
     {
-        private List<Cell> cells;
+        public List<Cell> Cells { get; set; }
 
         public InfiniteBoard()
         {
-            cells = new List<Cell>();
+            Cells = new List<Cell>();
         }
         public void Tick()
         {
@@ -26,12 +26,79 @@ namespace ConwaysGameOfLife
 
         public int CellCount()
         {
-            return cells.Count;
+            return Cells.Count;
         }
 
         public void AddCell(int x, int y)
         {
-            cells.Add(new Cell { X = x, Y = y});
+            Cells.Add(new Cell { X = x, Y = y});
+        }
+
+        public int getNumberOfAliveNeighbors(Cell cell)
+        {
+            int x = cell.X;
+            int y = cell.Y;
+            int nAlive = 0;
+
+            for(int i=0; i<Cells.Count; i++)
+            {
+                if(Cells[i].X == x - 1 && Cells[i].Y == y + 1)
+                {
+                    nAlive++;
+                }
+                if (Cells[i].X == x && Cells[i].Y == y + 1)
+                {
+                    nAlive++;
+                }
+                if (Cells[i].X == x + 1 && Cells[i].Y == y + 1)
+                {
+                    nAlive++;
+                }
+                if (Cells[i].X == x - 1 && Cells[i].Y == y)
+                {
+                    nAlive++;
+                }
+                if (Cells[i].X == x + 1 && Cells[i].Y == y)
+                {
+                    nAlive++;
+                }
+                if (Cells[i].X == x - 1 && Cells[i].Y == y - 1)
+                {
+                    nAlive++;
+                }
+                if (Cells[i].X == x && Cells[i].Y == y - 1)
+                {
+                    nAlive++;
+                }
+                if (Cells[i].X == x + 1 && Cells[i].Y == y - 1)
+                {
+                    nAlive++;
+                }
+            }
+            return nAlive;
+        }
+
+        public void RemoveCell(int x, int y)
+        {
+            for(int i=0; i<Cells.Count; i++)
+            {
+                if(Cells[i].X == x && Cells[i].Y == y)
+                {
+                    Cells.Remove(Cells[i]);
+                }
+            }
+        }
+
+        public bool CellDoesExist(int x, int y)
+        {
+            for (int i = 0; i < Cells.Count; i++)
+            {
+                if (Cells[i].X == x && Cells[i].Y == y)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

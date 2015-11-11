@@ -35,5 +35,36 @@ namespace CellTest
 
             Assert.AreEqual(1, world.CellCount());
         }
+
+        [TestMethod]
+        public void InfiniteBoardGetNumberOfAliveNeighhbors()
+        {
+            InfiniteBoard world = new InfiniteBoard();
+
+            world.AddCell(0, 0);
+            world.AddCell(1, 0);
+            world.AddCell(0, 1);
+            world.AddCell(1, 1);
+            int alive = world.getNumberOfAliveNeighbors(world.Cells[0]);
+            Assert.AreEqual(3, alive);
+        }
+
+        [TestMethod]
+        public void InfiniteBoardCellDoesExist()
+        {
+            InfiniteBoard world = new InfiniteBoard();
+            world.AddCell(0, 0);
+            Assert.IsTrue(world.CellDoesExist(0, 0));
+        }
+
+        [TestMethod]
+        public void InfiniteBoardTestRemoveCell()
+        {
+            InfiniteBoard world = new InfiniteBoard();
+            world.AddCell(0, 0);
+            world.RemoveCell(0, 0);
+            Assert.IsFalse(world.CellDoesExist(0, 0));
+            Assert.AreEqual(0, world.CellCount());
+        }
     }
 }

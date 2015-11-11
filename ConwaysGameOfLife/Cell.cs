@@ -8,7 +8,7 @@ namespace ConwaysGameOfLife
 {
     public class Cell
     {
-        public bool IsAlive { get; set; }
+        //public bool IsAlive { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
     }

@@ -111,5 +111,14 @@ namespace ConwaysGameOfLife
                 RemoveCell(x, y);
             }
         }
+
+        public void DeadRule(int x, int y)
+        {
+            int nAlive = getNumberOfAliveNeighbors(x, y);
+            if(nAlive == 3)
+            {
+                AddCell(x, y);
+            }
+        }
     }
 }

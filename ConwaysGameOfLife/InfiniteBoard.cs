@@ -120,5 +120,39 @@ namespace ConwaysGameOfLife
                 AddCell(x, y);
             }
         }
+
+        public void DoOneCell(int x, int y)
+        {
+            int nAlive = getNumberOfAliveNeighbors(x, y);
+            if(CellDoesExist(x, y))
+            {
+                AliveRule(x, y);
+            }
+            else
+            {
+                DeadRule(x, y);
+            }
+        }
+
+        public int getNeighbors(int x, int y)
+        {
+            int nAlive = 0;
+
+            for (int i = 0; i < Cells.Count; i++)
+            {
+                //return all neighbors somehow
+            }
+            return nAlive;
+        }
+
+        public void DoAll()
+        {
+            for(int i=0; i<Cells.Count; i++)
+            {
+                //get the neighbors
+                //DoOneCell on all of the neighbors
+                //DoOneCell on itself
+            }
+        }
     }
 }

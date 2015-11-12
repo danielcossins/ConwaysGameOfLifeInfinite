@@ -114,5 +114,19 @@ namespace CellTest
             world.DoOneCell(0, 0);
             Assert.AreEqual(true, world.CellDoesExist(0, 0));
         }
+
+        [TestMethod]
+        public void InfiniteBoardTestDoAll()
+        {
+            InfiniteBoard world = new InfiniteBoard();
+            world.AddCell(0, 0);
+            world.AddCell(0, 1);
+            world.AddCell(0, -1);
+            world.DoAll();
+            Assert.AreEqual(false, world.CellDoesExist(0, 1));
+            Assert.AreEqual(false, world.CellDoesExist(0, -1));
+            Assert.AreEqual(true, world.CellDoesExist(1, 0));
+            Assert.AreEqual(true, world.CellDoesExist(-1, 0));
+        }
     }
 }

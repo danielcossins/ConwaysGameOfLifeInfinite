@@ -143,16 +143,38 @@ namespace ConwaysGameOfLife
         //    return cellList;
         //}
 
-        //public void DoAll()
-        //{
-        //    for(int i=0; i<Cells.Count; i++)
-        //    {
-        //        //getAll the neighbors
-        //        List<Cell> neighbors = getNeighbors(Cells[i].X, Cells[i].Y);
-        //        //DoOneCell on all of the neighbors
-        //        for(int i=0; i<neighbors)
-        //        //DoOneCell on itself
-        //    }
-        //}
+        public void DoAll()
+        {
+            List<Cell> modifiedCells = new List<Cell>();
+            bool isInList = false;
+            for(int i=0; i<Cells.Count; i++)
+            {
+                ////getAll the neighbors
+                //List<Cell> neighbors = getNeighbors(Cells[i].X, Cells[i].Y);
+                ////DoOneCell on all of the neighbors
+                //for(int i=0; i<neighbors)
+                ////DoOneCell on itself
+                for(int j=0; j<modifiedCells.Count; j++)
+                {
+                    if(modifiedCells[j].X == Cells[i].X && modifiedCells[j].Y == Cells[i].Y)
+                    {
+                        isInList = true;
+                        break;
+                    }
+                }
+                if (!isInList)
+                {
+                    DoOneCell(Cells[i].X - 1, Cells[i].Y + 1);
+                    DoOneCell(Cells[i].X, Cells[i].Y + 1);
+                    DoOneCell(Cells[i].X + 1, Cells[i].Y + 1);
+                    DoOneCell(Cells[i].X - 1, Cells[i].Y);
+                    DoOneCell(Cells[i].X + 1, Cells[i].Y);
+                    DoOneCell(Cells[i].X - 1, Cells[i].Y - 1);
+                    DoOneCell(Cells[i].X, Cells[i].Y - 1);
+                    DoOneCell(Cells[i].X + 1, Cells[i].Y - 1);
+                    modifiedCells.Add(Cells[i]);
+                }
+            }
+        }
     }
 }

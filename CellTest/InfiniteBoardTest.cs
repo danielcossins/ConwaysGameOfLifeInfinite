@@ -91,5 +91,28 @@ namespace CellTest
             world.DeadRule(0, 0);
             Assert.AreEqual(true, world.CellDoesExist(0, 0));
         }
+
+        [TestMethod]
+        public void InfiniteBoardTestDoOneCellWithAliveCell()
+        {
+            InfiniteBoard world = new InfiniteBoard();
+            world.AddCell(0, 0);
+            world.AddCell(1, 0);
+            world.AddCell(0, 1);
+            world.AddCell(1, 1);
+            world.DoOneCell(0, 0);
+            Assert.AreEqual(true, world.CellDoesExist(0, 0));
+        }
+
+        [TestMethod]
+        public void InfiniteBoardTestDoOneCellWithDeadCell()
+        {
+            InfiniteBoard world = new InfiniteBoard();
+            world.AddCell(1, 0);
+            world.AddCell(0, 1);
+            world.AddCell(1, 1);
+            world.DoOneCell(0, 0);
+            Assert.AreEqual(true, world.CellDoesExist(0, 0));
+        }
     }
 }

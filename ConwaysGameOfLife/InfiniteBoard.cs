@@ -123,7 +123,6 @@ namespace ConwaysGameOfLife
 
         public void DoOneCell(int x, int y)
         {
-            int nAlive = getNumberOfAliveNeighbors(x, y);
             if(CellDoesExist(x, y))
             {
                 AliveRule(x, y);
@@ -134,25 +133,26 @@ namespace ConwaysGameOfLife
             }
         }
 
-        public int getNeighbors(int x, int y)
-        {
-            int nAlive = 0;
+        //public List<Cell> getNeighbors(int x, int y)
+        //{
+        //    object.x, object.y
+        //    for (int i = 0; i < Cells.Count; i++)
+        //    {
+                
+        //    }
+        //    return cellList;
+        //}
 
-            for (int i = 0; i < Cells.Count; i++)
-            {
-                //return all neighbors somehow
-            }
-            return nAlive;
-        }
-
-        public void DoAll()
-        {
-            for(int i=0; i<Cells.Count; i++)
-            {
-                //get the neighbors
-                //DoOneCell on all of the neighbors
-                //DoOneCell on itself
-            }
-        }
+        //public void DoAll()
+        //{
+        //    for(int i=0; i<Cells.Count; i++)
+        //    {
+        //        //getAll the neighbors
+        //        List<Cell> neighbors = getNeighbors(Cells[i].X, Cells[i].Y);
+        //        //DoOneCell on all of the neighbors
+        //        for(int i=0; i<neighbors)
+        //        //DoOneCell on itself
+        //    }
+        //}
     }
 }
